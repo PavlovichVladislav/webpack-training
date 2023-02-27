@@ -1,0 +1,22 @@
+body {
+    background-color: rgba(0, 49, 83, 0.8);
+}
+
+.container {
+    padding-top: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.logo {
+    /* background-image: url("../assets/webpack-logo.png");
+    background-size: cover; */
+    background: url("../assets/webpack-logo.png") center/cover no-repeat;
+    width: 800px;
+    height: 200px;
+    margin: 0 auto;
+}
