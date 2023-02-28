@@ -1,5 +1,9 @@
+@import "~normalize.css";
+@import "poppins.css";
+
 body {
     background-color: rgba(0, 49, 83, 0.8);
+    font-family: 'Poppins', sans-serif;
 }
 
 .container {
