@@ -17,10 +17,12 @@ h1 {
 }
 
 .logo {
-    /* background-image: url("../assets/webpack-logo.png");
-    background-size: cover; */
     background: url("../assets/webpack-logo.png") center/cover no-repeat;
     width: 800px;
     height: 200px;
     margin: 0 auto;
+}
+
+.code {
+    color: gold;
 }

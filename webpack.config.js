@@ -13,6 +13,25 @@ module.exports = {
       filename: "[name].[contenthash].js",
       path: path.resolve(__dirname, "dist"),
    },
+   resolve: {
+      extensions: [".js", ".json", ".png"],
+      alias: {
+         "@models": path.resolve(__dirname, "src/models"),
+         "@": path.resolve(__dirname, "src/models"),
+      },
+   },
+   optimization: {
+      splitChunks: {
+         chunks: "all",
+      },
+   },
+   devServer: {
+      static: {
+         directory: path.join(__dirname, "src"),
+      },
+      compress: true,
+      port: 4200,
+   },
    plugins: [
       new HTMLWebpackPlugin({
          template: "./index.html",
