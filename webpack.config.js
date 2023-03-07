@@ -1,6 +1,11 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const isDev = process.env.NODE_ENV === 'development';
+const isProd = !isDev;
 
 module.exports = {
    context: path.resolve(__dirname, "src"),
@@ -35,14 +40,34 @@ module.exports = {
    plugins: [
       new HTMLWebpackPlugin({
          template: "./index.html",
+         minify: {
+            collapseWhitespace: isProd
+         }
       }),
       new CleanWebpackPlugin(),
+      new CopyPlugin({
+         patterns: [
+            {
+               from: path.resolve(__dirname, "src/assets/favicon.ico"),
+               to: path.resolve(__dirname, "dist"),
+            },
+         ],
+      }),
+      new MiniCssExtractPlugin({
+         filename: "[name].[contenthash].css",
+      }),
    ],
    module: {
       rules: [
          {
             test: /\.css$/,
-            use: ["style-loader", "css-loader"],
+            use: [
+               {
+                  loader: MiniCssExtractPlugin.loader,
+                  options: {},
+               },
+               "css-loader",
+            ],
          },
          {
             test: /\.(png|svg|jpg|jpeg|gif)$/i,
