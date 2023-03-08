@@ -5,6 +5,7 @@ import json from "./assets/json.json";
 import logo from './assets/webpack-logo';
 import xml from './assets/data.xml';
 import csv from './assets/username.csv';
+import './styles/scss.scss';
 
 const post = new Post("Post title", logo);
 $('pre').addClass('code').html(post.toString());

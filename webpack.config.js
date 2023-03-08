@@ -3,9 +3,37 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
-const isDev = process.env.NODE_ENV === 'development';
+const isDev = process.env.NODE_ENV === "development";
 const isProd = !isDev;
+
+const optimization = () => {
+   const config = {
+      splitChunks: {
+         chunks: "all",
+      },
+   };
+
+   if (isProd) {
+      config.minimizer = [new CssMinimizerPlugin(), new TerserPlugin()];
+   }
+
+   return config;
+};
+
+const fileName = (extension) => (isDev ? `[name].${extension}` : `[name].[hash].${extension}`);
+
+const cssLoaders = (extra) => {
+   const loaders = [MiniCssExtractPlugin.loader, "css-loader"];
+
+   if (extra) {
+      loaders.push(extra);
+   }
+
+   return loaders;
+};
 
 module.exports = {
    context: path.resolve(__dirname, "src"),
@@ -15,7 +43,7 @@ module.exports = {
       analytics: "./analytics.js",
    },
    output: {
-      filename: "[name].[contenthash].js",
+      filename: fileName("js"),
       path: path.resolve(__dirname, "dist"),
    },
    resolve: {
@@ -25,11 +53,7 @@ module.exports = {
          "@": path.resolve(__dirname, "src/models"),
       },
    },
-   optimization: {
-      splitChunks: {
-         chunks: "all",
-      },
-   },
+   optimization: optimization(),
    devServer: {
       static: {
          directory: path.join(__dirname, "src"),
@@ -41,8 +65,8 @@ module.exports = {
       new HTMLWebpackPlugin({
          template: "./index.html",
          minify: {
-            collapseWhitespace: isProd
-         }
+            collapseWhitespace: isProd,
+         },
       }),
       new CleanWebpackPlugin(),
       new CopyPlugin({
@@ -54,20 +78,18 @@ module.exports = {
          ],
       }),
       new MiniCssExtractPlugin({
-         filename: "[name].[contenthash].css",
+         filename: fileName("css"),
       }),
    ],
    module: {
       rules: [
          {
             test: /\.css$/,
-            use: [
-               {
-                  loader: MiniCssExtractPlugin.loader,
-                  options: {},
-               },
-               "css-loader",
-            ],
+            use: cssLoaders(),
+         },
+         {
+            test: /\.s[ac]ss$/,
+            use: cssLoaders("sass-loader"),
          },
          {
             test: /\.(png|svg|jpg|jpeg|gif)$/i,
