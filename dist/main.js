@@ -19,17 +19,6 @@ eval("function _typeof(obj) { \"@babel/helpers - typeof\"; return _typeof = \"fu
 
 /***/ }),
 
-/***/ "./index.js":
-/*!******************!*\
-  !*** ./index.js ***!
-  \******************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _models_Post__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @models/Post */ \"./models/Post.js\");\n/* harmony import */ var _babel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./babel */ \"./babel.js\");\n/* harmony import */ var _babel__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _assets_json_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/json.json */ \"./assets/json.json\");\n/* harmony import */ var _assets_webpack_logo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/webpack-logo */ \"./assets/webpack-logo.png\");\n/* harmony import */ var _assets_data_xml__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/data.xml */ \"./assets/data.xml\");\n/* harmony import */ var _assets_username_csv__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/username.csv */ \"./assets/username.csv\");\n/* harmony import */ var _assets_username_csv__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_assets_username_csv__WEBPACK_IMPORTED_MODULE_6__);\n/* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./styles/style.css */ \"./styles/style.css\");\n/* harmony import */ var _styles_scss_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./styles/scss.scss */ \"./styles/scss.scss\");\n\n\n\n\n\n\n\n\n\nvar post = new _models_Post__WEBPACK_IMPORTED_MODULE_1__[\"default\"](\"Post title\", _assets_webpack_logo__WEBPACK_IMPORTED_MODULE_4__);\njquery__WEBPACK_IMPORTED_MODULE_0__('pre').addClass('code').html(post.toString());\nconsole.log(\"Post to string:\", post.toString());\nconsole.log(\"JSON file content:\", _assets_json_json__WEBPACK_IMPORTED_MODULE_3__);\nconsole.log('XML', _assets_data_xml__WEBPACK_IMPORTED_MODULE_5__);\nconsole.log('CSV', (_assets_username_csv__WEBPACK_IMPORTED_MODULE_6___default()));\n\n//# sourceURL=webpack:///./index.js?");
-
-/***/ }),
-
 /***/ "./models/Post.js":
 /*!************************!*\
   !*** ./models/Post.js ***!
@@ -38,6 +27,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jque
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": function() { return /* binding */ Post; }\n/* harmony export */ });\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; return _typeof = \"function\" == typeof Symbol && \"symbol\" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && \"function\" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }, _typeof(obj); }\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, \"prototype\", { writable: false }); return Constructor; }\nfunction _toPropertyKey(arg) { var key = _toPrimitive(arg, \"string\"); return _typeof(key) === \"symbol\" ? key : String(key); }\nfunction _toPrimitive(input, hint) { if (_typeof(input) !== \"object\" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || \"default\"); if (_typeof(res) !== \"object\") return res; throw new TypeError(\"@@toPrimitive must return a primitive value.\"); } return (hint === \"string\" ? String : Number)(input); }\nvar Post = /*#__PURE__*/function () {\n  function Post(title, img) {\n    _classCallCheck(this, Post);\n    this.title = title;\n    this.img = img;\n    this.date = new Date();\n  }\n  _createClass(Post, [{\n    key: \"toString\",\n    value: function toString() {\n      return JSON.stringify({\n        title: this.title,\n        date: this.date.toJSON(),\n        img: this.img\n      }, null, 2);\n    }\n  }]);\n  return Post;\n}();\n\n\n//# sourceURL=webpack:///./models/Post.js?");
+
+/***/ }),
+
+/***/ "./index.jsx":
+/*!*******************!*\
+  !*** ./index.jsx ***!
+  \*******************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ \"../node_modules/react-dom/client.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _models_Post__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @models/Post */ \"./models/Post.js\");\n/* harmony import */ var _babel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./babel */ \"./babel.js\");\n/* harmony import */ var _babel__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _assets_json_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/json.json */ \"./assets/json.json\");\n/* harmony import */ var _assets_webpack_logo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/webpack-logo */ \"./assets/webpack-logo.png\");\n/* harmony import */ var _assets_data_xml__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/data.xml */ \"./assets/data.xml\");\n/* harmony import */ var _assets_username_csv__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./assets/username.csv */ \"./assets/username.csv\");\n/* harmony import */ var _assets_username_csv__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_assets_username_csv__WEBPACK_IMPORTED_MODULE_7__);\n/* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./styles/style.css */ \"./styles/style.css\");\n/* harmony import */ var _styles_scss_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./styles/scss.scss */ \"./styles/scss.scss\");\n/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ \"../node_modules/react/jsx-runtime.js\");\n\n\n\n\n\n\n\n\n\n\n\n\nvar post = new _models_Post__WEBPACK_IMPORTED_MODULE_2__[\"default\"](\"Post title\", _assets_webpack_logo__WEBPACK_IMPORTED_MODULE_5__);\n// $(\"pre\").addClass(\"code\").html(post.toString());\n\nconsole.log(\"Post to string:\", post.toString());\nconsole.log(\"JSON file content:\", _assets_json_json__WEBPACK_IMPORTED_MODULE_4__);\nconsole.log(\"XML\", _assets_data_xml__WEBPACK_IMPORTED_MODULE_6__);\nconsole.log(\"CSV\", (_assets_username_csv__WEBPACK_IMPORTED_MODULE_7___default()));\nvar root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_0__.createRoot)(document.getElementById(\"app\"));\nvar App = function App() {\n  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(\"div\", {\n    className: \"container\",\n    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(\"h1\", {\n      children: \"My webpack training.\"\n    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(\"hr\", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(\"div\", {\n      className: \"logo\"\n    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(\"hr\", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(\"pre\", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(\"div\", {\n      className: \"box\",\n      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(\"h2\", {\n        children: \"scss test\"\n      })\n    })]\n  });\n};\nroot.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(App, {}));\n\n//# sourceURL=webpack:///./index.jsx?");
 
 /***/ }),
 
@@ -120,13 +120,16 @@ eval("module.exports = JSON.parse('{\"content\":\"json content\"}');\n\n//# sour
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
+/******/ 			id: moduleId,
+/******/ 			loaded: false,
 /******/ 			exports: {}
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -222,6 +225,15 @@ eval("module.exports = JSON.parse('{\"content\":\"json content\"}');\n\n//# sour
 /******/ 		};
 /******/ 	}();
 /******/ 	
+/******/ 	/* webpack/runtime/node module decorator */
+/******/ 	!function() {
+/******/ 		__webpack_require__.nmd = function(module) {
+/******/ 			module.paths = [];
+/******/ 			if (!module.children) module.children = [];
+/******/ 			return module;
+/******/ 		};
+/******/ 	}();
+/******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	!function() {
 /******/ 		var scriptUrl;
@@ -302,8 +314,8 @@ eval("module.exports = JSON.parse('{\"content\":\"json content\"}');\n\n//# sour
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["vendors-node_modules_jquery_dist_jquery_js","vendors-node_modules_babel_polyfill_lib_index_js"], function() { return __webpack_require__("../node_modules/@babel/polyfill/lib/index.js"); })
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendors-node_modules_jquery_dist_jquery_js","vendors-node_modules_babel_polyfill_lib_index_js"], function() { return __webpack_require__("./index.js"); })
+/******/ 	__webpack_require__.O(undefined, ["vendors-node_modules_jquery_dist_jquery_js","vendors-node_modules_babel_polyfill_lib_index_js-node_modules_react-dom_client_js-node_module-87e1f9"], function() { return __webpack_require__("../node_modules/@babel/polyfill/lib/index.js"); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendors-node_modules_jquery_dist_jquery_js","vendors-node_modules_babel_polyfill_lib_index_js-node_modules_react-dom_client_js-node_module-87e1f9"], function() { return __webpack_require__("./index.jsx"); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

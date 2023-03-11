@@ -10,13 +10,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./analytics.js":
+/***/ "./analytics.ts":
 /*!**********************!*\
-  !*** ./analytics.js ***!
+  !*** ./analytics.ts ***!
   \**********************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n\nfunction createAnalytics() {\n  var documentClickCounter = 0;\n  var destroyed = false;\n  var listener = function listener() {\n    return documentClickCounter++;\n  };\n  jquery__WEBPACK_IMPORTED_MODULE_0__(document).on('click', listener);\n  return {\n    destroy: function destroy() {\n      jquery__WEBPACK_IMPORTED_MODULE_0__(document).off('click', listener);\n      destroyed = true;\n    },\n    getClicks: function getClicks() {\n      if (destroyed) return \"Analytics is destoryed. Total click = \".concat(counter);\n      return documentClickCounter;\n    }\n  };\n}\nwindow.analytics = createAnalytics();\n\n//# sourceURL=webpack:///./analytics.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n\nfunction createAnalytics() {\n  var documentClickCounter = 0;\n  var destroyed = false;\n  var listener = function listener() {\n    return documentClickCounter++;\n  };\n  jquery__WEBPACK_IMPORTED_MODULE_0__(document).on('click', listener);\n  return {\n    destroy: function destroy() {\n      jquery__WEBPACK_IMPORTED_MODULE_0__(document).off('click', listener);\n      destroyed = true;\n    },\n    getClicks: function getClicks() {\n      if (destroyed) return \"Analytics is destoryed. Total click = \".concat(documentClickCounter);\n      return documentClickCounter;\n    }\n  };\n}\nwindow[\"analytics\"] = createAnalytics();\n\n//# sourceURL=webpack:///./analytics.ts?");
 
 /***/ })
 
@@ -184,7 +184,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jque
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendors-node_modules_jquery_dist_jquery_js"], function() { return __webpack_require__("./analytics.js"); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendors-node_modules_jquery_dist_jquery_js"], function() { return __webpack_require__("./analytics.ts"); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

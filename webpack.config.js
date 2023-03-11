@@ -39,8 +39,8 @@ module.exports = {
    context: path.resolve(__dirname, "src"),
    mode: "development",
    entry: {
-      main: ["@babel/polyfill", "./index.js"],
-      analytics: "./analytics.js",
+      main: ["@babel/polyfill", "./index.jsx"],
+      analytics: "./analytics.ts",
    },
    output: {
       filename: fileName("js"),
@@ -108,7 +108,7 @@ module.exports = {
             use: ["csv-loader"],
          },
          {
-            test: /\.m?js$/,
+            test: /\.[tj]s$/,
             exclude: /node_modules/,
             use: {
                loader: "babel-loader",
@@ -117,6 +117,16 @@ module.exports = {
                },
             },
          },
+         {
+            test: /\.jsx$/,
+            exclude: /node_modules/,
+            use: {
+               loader: "babel-loader",
+               options: {
+                  presets: ["@babel/preset-env"],
+               },
+            },
+         }
       ],
    },
 };
