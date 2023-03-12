@@ -5,9 +5,41 @@ const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const ESLintPlugin = require("eslint-webpack-plugin");
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const isDev = process.env.NODE_ENV === "development";
 const isProd = !isDev;
+
+const plugins = () => {
+   const base = [
+      new HTMLWebpackPlugin({
+         template: "./index.html",
+         minify: {
+            collapseWhitespace: isProd,
+         },
+      }),
+      new CleanWebpackPlugin(),
+      new CopyPlugin({
+         patterns: [
+            {
+               from: path.resolve(__dirname, "src/assets/favicon.ico"),
+               to: path.resolve(__dirname, "dist"),
+            },
+         ],
+      }),
+      new MiniCssExtractPlugin({
+         filename: fileName("css"),
+      }),
+      new ESLintPlugin(),
+   ];
+
+   if (isProd) {
+      base.push(new BundleAnalyzerPlugin())
+   }
+
+   return base;
+};
 
 const optimization = () => {
    const config = {
@@ -61,26 +93,8 @@ module.exports = {
       compress: true,
       port: 4200,
    },
-   plugins: [
-      new HTMLWebpackPlugin({
-         template: "./index.html",
-         minify: {
-            collapseWhitespace: isProd,
-         },
-      }),
-      new CleanWebpackPlugin(),
-      new CopyPlugin({
-         patterns: [
-            {
-               from: path.resolve(__dirname, "src/assets/favicon.ico"),
-               to: path.resolve(__dirname, "dist"),
-            },
-         ],
-      }),
-      new MiniCssExtractPlugin({
-         filename: fileName("css"),
-      }),
-   ],
+   devtool: isDev ? "source-map" : false,
+   plugins: plugins(),
    module: {
       rules: [
          {
@@ -126,7 +140,7 @@ module.exports = {
                   presets: ["@babel/preset-env"],
                },
             },
-         }
+         },
       ],
    },
 };

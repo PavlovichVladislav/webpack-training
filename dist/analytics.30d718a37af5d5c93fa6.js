@@ -1,11 +1,3 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 /******/ (function() { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
@@ -16,7 +8,29 @@
   \**********************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"../node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n\nfunction createAnalytics() {\n  var documentClickCounter = 0;\n  var destroyed = false;\n  var listener = function listener() {\n    return documentClickCounter++;\n  };\n  jquery__WEBPACK_IMPORTED_MODULE_0__(document).on('click', listener);\n  return {\n    destroy: function destroy() {\n      jquery__WEBPACK_IMPORTED_MODULE_0__(document).off('click', listener);\n      destroyed = true;\n    },\n    getClicks: function getClicks() {\n      if (destroyed) return \"Analytics is destoryed. Total click = \".concat(documentClickCounter);\n      return documentClickCounter;\n    }\n  };\n}\nwindow[\"analytics\"] = createAnalytics();\n\n//# sourceURL=webpack:///./analytics.ts?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "../node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+function createAnalytics() {
+  var documentClickCounter = 0;
+  var destroyed = false;
+  var listener = function listener() {
+    return documentClickCounter++;
+  };
+  jquery__WEBPACK_IMPORTED_MODULE_0__(document).on('click', listener);
+  return {
+    destroy: function destroy() {
+      jquery__WEBPACK_IMPORTED_MODULE_0__(document).off('click', listener);
+      destroyed = true;
+    },
+    getClicks: function getClicks() {
+      if (destroyed) return "Analytics is destoryed. Total click = ".concat(documentClickCounter);
+      return documentClickCounter;
+    }
+  };
+}
+window["analytics"] = createAnalytics();
 
 /***/ })
 
