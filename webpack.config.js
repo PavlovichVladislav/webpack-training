@@ -11,6 +11,9 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const isDev = process.env.NODE_ENV === "development";
 const isProd = !isDev;
 
+const target = isDev ? 'web' : 'browserslist';
+const devtool = isDev ? 'source-map' : undefined;
+
 const plugins = () => {
    const base = [
       new HTMLWebpackPlugin({
@@ -76,6 +79,7 @@ module.exports = {
    },
    output: {
       filename: fileName("js"),
+      clean: true,
       path: path.resolve(__dirname, "dist"),
    },
    resolve: {
@@ -93,7 +97,8 @@ module.exports = {
       compress: true,
       port: 4200,
    },
-   devtool: isDev ? "source-map" : false,
+   target,
+   devtool,
    plugins: plugins(),
    module: {
       rules: [

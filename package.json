@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/PavlovichVladislav/webpack-training.git"
   },
-  "browserslist": "> 0.25%, not dead",
+  "browserslist": "> 0.25%, not dead, las 2 versions",
   "keywords": [
     "js",
     "webpack"
