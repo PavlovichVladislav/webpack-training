@@ -6,13 +6,14 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const postcssPresetEnv = require('postcss-preset-env');
 
 const isDev = process.env.NODE_ENV === "development";
 const isProd = !isDev;
 
-const target = isDev ? 'web' : 'browserslist';
-const devtool = isDev ? 'source-map' : undefined;
+const target = isDev ? "web" : "browserslist";
+const devtool = isDev ? "source-map" : undefined;
 
 const plugins = () => {
    const base = [
@@ -38,7 +39,7 @@ const plugins = () => {
    ];
 
    if (isProd) {
-      base.push(new BundleAnalyzerPlugin())
+      base.push(new BundleAnalyzerPlugin());
    }
 
    return base;
@@ -61,7 +62,20 @@ const optimization = () => {
 const fileName = (extension) => (isDev ? `[name].${extension}` : `[name].[hash].${extension}`);
 
 const cssLoaders = (extra) => {
-   const loaders = [MiniCssExtractPlugin.loader, "css-loader"];
+   const loaders = [];
+
+   isProd ? loaders.push(MiniCssExtractPlugin.loader) : loaders.push("style-loader");
+
+   loaders.push("css-loader");
+
+   loaders.push({
+      loader: "postcss-loader",
+      options: {
+         postcssOptions: {
+            plugins: [postcssPresetEnv()],
+         },
+      },
+   });
 
    if (extra) {
       loaders.push(extra);
@@ -96,6 +110,7 @@ module.exports = {
       },
       compress: true,
       port: 4200,
+      hot: true,
    },
    target,
    devtool,
