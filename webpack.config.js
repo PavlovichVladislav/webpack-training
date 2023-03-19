@@ -7,7 +7,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
-const postcssPresetEnv = require('postcss-preset-env');
+const postcssPresetEnv = require("postcss-preset-env");
 
 const isDev = process.env.NODE_ENV === "development";
 const isProd = !isDev;
@@ -95,6 +95,7 @@ module.exports = {
       filename: fileName("js"),
       clean: true,
       path: path.resolve(__dirname, "dist"),
+      assetModuleFilename: "assets/[name][ext]",
    },
    resolve: {
       extensions: [".js", ".json", ".png"],
@@ -126,12 +127,40 @@ module.exports = {
             use: cssLoaders("sass-loader"),
          },
          {
-            test: /\.(png|svg|jpg|jpeg|gif)$/i,
+            test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
+            use: [
+               {
+                  loader: "image-webpack-loader",
+                  options: {
+                     mozjpeg: {
+                        progressive: true,
+                     },
+                     // optipng.enabled: false will disable optipng
+                     optipng: {
+                        enabled: false,
+                     },
+                     pngquant: {
+                        quality: [0.65, 0.9],
+                        speed: 4,
+                     },
+                     gifsicle: {
+                        interlaced: false,
+                     },
+                     // the webp option will enable WEBP
+                     webp: {
+                        quality: 75,
+                     },
+                  },
+               },
+            ],
             type: "asset/resource",
          },
          {
             test: /\.(ttf|woff|woff2|eot)$/,
-            type: "asset/inline",
+            type: "asset/resource",
+            generator: {
+               filename: "fonts/[name][ext]",
+            },
          },
          {
             test: /\.xml$/i,
