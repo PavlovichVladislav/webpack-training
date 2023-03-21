@@ -1,0 +1,1 @@
+{"version":3,"file":"data.bundle.js","mappings":";;;;;;;;AAAAA,OAAO,CAACC,GAAG,CAAC,aAAa,CAAC","sources":["webpack:///./data.js"],"sourcesContent":["console.log('data loaded');"],"names":["console","log"],"sourceRoot":""}
