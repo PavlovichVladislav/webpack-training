@@ -9,12 +9,18 @@ const ESLintPlugin = require("eslint-webpack-plugin");
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const postcssPresetEnv = require("postcss-preset-env");
+const ConsoleLogOnBuildWebpackPlugin = require("./src/customPlugin/ConsoleLogOnBuildWebpackPlugin");
+const { ProgressPlugin } = require('webpack');
 
 const isDev = process.env.NODE_ENV === "development";
 const isProd = !isDev;
 
 const target = isDev ? "web" : "browserslist";
 const devtool = isDev ? "source-map" : undefined;
+
+const progresstHandler = (percentage, message, ...args) => {
+  console.info(percentage, message, ...args);
+};
 
 const plugins = () => {
   const base = [
@@ -37,6 +43,8 @@ const plugins = () => {
       filename: fileName("css"),
     }),
     new ESLintPlugin(),
+    new ProgressPlugin(progresstHandler),
+    new ConsoleLogOnBuildWebpackPlugin(),
   ];
 
   if (isProd) {
@@ -95,9 +103,9 @@ module.exports = {
     main: ["@babel/polyfill", "./index.jsx", "./log.js"],
     analytics: "./analytics.ts",
     data: {
-      dependOn: 'analytics',
-      import: './data.js'
-    }
+      dependOn: "analytics",
+      import: "./data.js",
+    },
   },
   output: {
     path: path.resolve(__dirname, "dist"),
